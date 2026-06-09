@@ -1,0 +1,19 @@
+date,account,segment,severity,theme,feedback,source
+2026-05-02,Acme Corp,Enterprise,high,Reliability,Repeated API timeouts during month-end close,support_ticket
+2026-05-03,Nova Retail,Mid-Market,medium,Onboarding,Setup wizard skipped SSO configuration step,support_ticket
+2026-05-05,Blue Harbor Logistics,Enterprise,low,Documentation,Missing webhook retry guidance in docs,email
+2026-05-07,Pioneer Health,Mid-Market,high,Security,Requested audit log export for admin actions,support_ticket
+2026-05-09,Summit Finance,Enterprise,critical,Billing,Invoice totals mismatch contract line items,support_ticket
+2026-05-10,GreenLeaf Foods,Mid-Market,medium,Integrations,Slack alerts arrive 15 minutes late,support_ticket
+2026-05-12,Orbit Media,SMB,low,UX,Dashboard filters reset on page refresh,email
+2026-05-14,Acme Corp,Enterprise,high,Reliability,Batch jobs fail when timezone is UTC+7,support_ticket
+2026-05-16,Cedar Labs,Mid-Market,medium,Performance,Report export exceeds 60s for 50k rows,support_ticket
+2026-05-18,Nova Retail,Mid-Market,high,Data Quality,Duplicate customer records after CSV import,support_ticket
+2026-05-20,Pioneer Health,Mid-Market,medium,Compliance,Needs BAA template for HIPAA review,email
+2026-05-22,Summit Finance,Enterprise,high,Reliability,Payment webhook retries not idempotent,support_ticket
+2026-05-24,Blue Harbor Logistics,Enterprise,medium,Support,Escalation SLA missed twice this quarter,support_ticket
+2026-05-26,GreenLeaf Foods,Mid-Market,low,Feature,Requested dark mode for ops dashboard,email
+2026-05-28,Orbit Media,SMB,medium,Integrations,GitHub connector missing write scope in sandbox,support_ticket
+2026-05-30,Cedar Labs,Mid-Market,high,Security,API key rotation not enforced for service accounts,support_ticket
+2026-06-01,Acme Corp,Enterprise,critical,Reliability,Production outage during scheduled maintenance window,support_ticket
+2026-06-03,Nova Retail,Mid-Market,medium,Onboarding,Training session rescheduled twice,support_ticket

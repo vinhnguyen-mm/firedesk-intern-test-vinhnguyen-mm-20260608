@@ -1,0 +1,17 @@
+account,stage,arr_usd,owner,next_step,risk
+Acme Corp,Negotiation,420000,Alex Kim,Legal review of MSA,High — reliability concerns
+Nova Retail,Closed Won,185000,Jordan Lee,Schedule QBR,Medium — data quality cleanup
+Blue Harbor Logistics,Proposal,310000,Sam Patel,Security questionnaire,D medium
+Pioneer Health,Discovery,95000,Taylor Nguyen,Send HIPAA checklist,High — audit export
+Summit Finance,Negotiation,560000,Alex Kim,Fix billing discrepancy,Critical — invoice mismatch
+GreenLeaf Foods,Closed Won,120000,Jordan Lee,Deploy Slack fix,Low
+Orbit Media,Discovery,45000,Sam Patel,Product demo,Low
+Cedar Labs,Proposal,210000,Taylor Nguyen,Performance benchmark,Medium
+Summit Finance,Closed Won,560000,Alex Kim,Renewal planning,Critical — duplicate stage entry
+Pioneer Health,Closed Won,95000,Taylor Nguyen,Onboard admin users,High — stage mismatch vs discovery
+Acme Corp,Closed Won,420000,Alex Kim,Executive sponsor call,High — contradicts negotiation row
+Nova Retail,Proposal,185000,Jordan Lee,Reconcile duplicate records,Medium
+Blue Harbor Logistics,Closed Won,310000,Sam Patel,Implementation kickoff,Medium — risk understated in sheet
+GreenLeaf Foods,Proposal,120000,Jordan Lee,Integrations review,Low
+Orbit Media,Closed Won,45000,Sam Patel,Enable GitHub write tier,Medium
+Cedar Labs,Negotiation,210000,Taylor Nguyen,Security review,High

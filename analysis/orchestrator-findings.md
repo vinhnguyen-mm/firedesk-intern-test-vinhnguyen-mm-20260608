@@ -1,28 +1,26 @@
 # Orchestrator Analysis Findings - 2026-06-09
 
 ## Top 5 Risks
-1. **Acme Corp Production Stability**: Critical outage (June 01) and unresolved batch job issues in UTC+7. Pipeline shows conflicting stages (Negotiation vs Closed Won).
-2. **Summit Finance Billing Integrity**: Critical invoice mismatch (May 09) and unreliable payment webhooks. Pipeline shows conflicting stages.
-3. **Pioneer Health Compliance/Audit**: High severity feedback regarding audit log export (May 07). Although release notes claim GA, the pipeline still shows it as a "High" risk and stage mismatch.
-4. **Nova Retail Data Quality & Onboarding**: Duplicate customer records (May 18) and SSO configuration issues. Release notes claim SSO auto-config is fixed, but feedback suggests otherwise.
-5. **Cedar Labs Performance**: Report export performance issues (May 16). Release notes claim a fix, but validation with the customer is needed.
+1. **Acme Corp Production Stability**: Critical outage (June 01) and unresolved batch job issues in UTC+7. Pipeline shows conflicting stages and ARR mismatch (20k vs 50k).
+2. **Meridian Systems Security**: Critical security escalation in Google Sheets regarding suspected unauthorized API access; requiring incident report within 24h. This account is missing from GitHub.
+3. **Summit Finance Billing Integrity**: Critical invoice mismatch (May 09). Pipeline shows conflicting stages and "billing reconciled" status in Sheets despite missing GitHub confirmation.
+4. **Pioneer Health Compliance/Audit**: High severity feedback regarding audit log export (May 07). Release notes claim GA, but pipeline inconsistencies persist.
+5. **Nova Retail Data Quality & Onboarding**: Duplicate customer records (May 18) and SSO configuration issues. Release notes claim SSO auto-config is fixed, but feedback suggests otherwise.
 
-## Inconsistencies across GitHub and Google Workspace
-- **Acme Corp Stage**: `pipeline.csv` lists both "Negotiation" and "Closed Won".
-- **Summit Finance Stage**: `pipeline.csv` lists both "Negotiation" and "Closed Won".
-- **Pioneer Health Stage**: `pipeline.csv` lists both "Discovery" and "Closed Won".
-- **Acme Timezone Fix**: `release_notes.md` says fixed for all regions except UTC+7, while `customer_feedback.csv` confirms UTC+7 is the failing region.
-- **Nova Retail SSO**: `release_notes.md` claims auto-config, but `customer_feedback.csv` says it was skipped.
-- **Blue Harbor Security**: `release_notes.md` says zero open security findings, but `pipeline.csv` says "risk understated in sheet".
-- **Google Workspace Data**: All GWorkspace assets (Pipeline Review, Support Themes, Customer Brief) are currently empty or 0-byte files.
+## Cross-Source Inconsistencies
+- **ARR Mismatch (Acme Corp)**: $420,000 (GitHub) vs $450,000 (Google Sheets).
+- **Risk Level Contradictions**: GitHub flags Acme, Pioneer, and Summit as "High/Critical" risk, while Google Sheets marks them as "Medium/Low" or "Reconciled."
+- **Missing Account**: "Meridian Systems" exists only in Google Sheets `Support Themes` with a critical security risk; absent from GitHub.
+- **Pipeline Stage Conflicts**: GitHub `pipeline.csv` lists both "Negotiation" and "Closed Won" for multiple accounts, while Google Sheets lists only "Closed Won."
+- **SSO Implementation**: `release_notes.md` claims auto-config is live, but `customer_feedback.csv` confirms it was skipped for Nova Retail.
 
 ## Source Documents
 - GitHub: `data/pipeline.csv`, `data/customer_feedback.csv`, `docs/release_notes.md`.
-- Google Workspace: `Pipeline Review` (Spreadsheet), `Support Themes` (Spreadsheet), `Customer Brief` (PDF).
+- Google Workspace: `Pipeline Review` (Spreadsheet), `Support Themes` (Spreadsheet).
 
 ## Recommended Next Actions
-- **Acme Corp**: Resolve UTC+7 batch job fix and clarify contract status (Closed Won vs Negotiation).
-- **Summit Finance**: Complete billing reconciliation and verify webhook idempotency.
-- **Pioneer Health**: Verify audit log export GA with customer and update pipeline stage.
-- **Nova Retail**: Execute data deduplication for customer records and verify SSO wizard fix.
-- **Cedar Labs**: Confirm report export speed fix with customer for 50k+ datasets.
+- **Meridian Systems**: Immediately investigate suspected unauthorized API access and produce the requested incident report.
+- **Acme Corp**: Resolve UTC+7 batch job fix and reconcile the $30k ARR discrepancy and contract stage.
+- **Summit Finance**: Verify billing reconciliation status across both sources and confirm webhook idempotency.
+- **Pioneer Health**: Update GitHub repository to reflect GA status of audit log export and consolidate pipeline rows.
+- **Nova Retail**: Execute data deduplication for customer records and verify SSO wizard fix in production.

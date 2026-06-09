@@ -1,26 +1,31 @@
 # Orchestrator Analysis Findings - 2026-06-09
 
-## Top 5 Risks
-1. **Acme Corp Production Stability**: Critical outage (June 01) and unresolved batch job issues in UTC+7. Pipeline shows conflicting stages and ARR mismatch (20k vs 50k).
-2. **Meridian Systems Security**: Critical security escalation in Google Sheets regarding suspected unauthorized API access; requiring incident report within 24h. This account is missing from GitHub.
-3. **Summit Finance Billing Integrity**: Critical invoice mismatch (May 09). Pipeline shows conflicting stages and "billing reconciled" status in Sheets despite missing GitHub confirmation.
-4. **Pioneer Health Compliance/Audit**: High severity feedback regarding audit log export (May 07). Release notes claim GA, but pipeline inconsistencies persist.
-5. **Nova Retail Data Quality & Onboarding**: Duplicate customer records (May 18) and SSO configuration issues. Release notes claim SSO auto-config is fixed, but feedback suggests otherwise.
+## Top 5 Customer or Product Risks
+
+1. **Meridian Systems Security Escalation (Critical)**: Suspected unauthorized API access. Incident report required within 24 hours. This account is entirely missing from GitHub tracking.
+2. **Acme Corp Stability & Data Mismatch (Critical)**: Recent production outage (June 01) and unresolved batch job issues in UTC+7. There is also a $30k ARR discrepancy between sales and engineering records.
+3. **Summit Finance Billing Integrity (High)**: Critical invoice-to-contract mismatch reported. Conflicting records on whether billing has been reconciled.
+4. **Pioneer Health Compliance (High)**: Outstanding HIPAA BAA and audit log requirements. Release notes claim GA, but pipeline shows "Discovery" stage, indicating a process gap.
+5. **Nova Retail Data Quality (Medium)**: Duplicate customer records and SSO configuration issues persisting despite reported fixes.
 
 ## Cross-Source Inconsistencies
-- **ARR Mismatch (Acme Corp)**: $420,000 (GitHub) vs $450,000 (Google Sheets).
-- **Risk Level Contradictions**: GitHub flags Acme, Pioneer, and Summit as "High/Critical" risk, while Google Sheets marks them as "Medium/Low" or "Reconciled."
-- **Missing Account**: "Meridian Systems" exists only in Google Sheets `Support Themes` with a critical security risk; absent from GitHub.
-- **Pipeline Stage Conflicts**: GitHub `pipeline.csv` lists both "Negotiation" and "Closed Won" for multiple accounts, while Google Sheets lists only "Closed Won."
-- **SSO Implementation**: `release_notes.md` claims auto-config is live, but `customer_feedback.csv` confirms it was skipped for Nova Retail.
+
+| Item | GitHub (Engineering) | Google Workspace (Sales/GTM) |
+|---|---|---|
+| **Acme Corp ARR** | $420,000 | $450,000 |
+| **Account Presence** | Meridian Systems is absent. | Meridian Systems has a critical security risk. |
+| **Risk Level** | High/Critical for major accounts. | Low/Medium/Reconciled for same accounts. |
+| **Deployment Status** | UTC+7 fix is pending. | UTC+7 fix is reported as complete. |
+| **SSO Status** | SSO was skipped for Nova Retail. | SSO auto-config is reported as fixed. |
 
 ## Source Documents
-- GitHub: `data/pipeline.csv`, `data/customer_feedback.csv`, `docs/release_notes.md`.
-- Google Workspace: `Pipeline Review` (Spreadsheet), `Support Themes` (Spreadsheet).
+
+- **GitHub**: `data/pipeline.csv`, `data/customer_feedback.csv`, `docs/release_notes.md`
+- **Google Workspace**: `Pipeline Review` (Sheet), `Support Themes` (Sheet), `Customer Brief` (Doc)
 
 ## Recommended Next Actions
-- **Meridian Systems**: Immediately investigate suspected unauthorized API access and produce the requested incident report.
-- **Acme Corp**: Resolve UTC+7 batch job fix and reconcile the $30k ARR discrepancy and contract stage.
-- **Summit Finance**: Verify billing reconciliation status across both sources and confirm webhook idempotency.
-- **Pioneer Health**: Update GitHub repository to reflect GA status of audit log export and consolidate pipeline rows.
-- **Nova Retail**: Execute data deduplication for customer records and verify SSO wizard fix in production.
+
+- **Security**: Immediately investigate the Meridian Systems API breach and provide the 24h incident report.
+- **Finance**: Audit the Summit Finance billing sync and reconcile the Acme Corp contract value ($30k gap).
+- **Product/Engineering**: Manually verify v2.8 fixes in production (specifically UTC+7 and SSO wizard) to resolve the contradiction between release notes and customer feedback.
+- **GTM Operations**: Standardize pipeline stages across GitHub and Google Sheets to ensure a single source of truth for account health.
